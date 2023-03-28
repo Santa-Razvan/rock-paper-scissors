@@ -1,5 +1,5 @@
 console.log("Hello world!");
-const choices = ['Rock', 'Paper', 'Scrissors'];
+const choices = ['rock', 'paper', 'scrissors'];
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -11,12 +11,11 @@ function play(playerSelection, computerSelection) {
 
 let playerSelection = "";
 do {
-    playerSelection = prompt("Pick something between rock, paper, scrissors!:").toLowerCase();
-} while ((playerSelection !== 'rock'))
-// (playerSelection !== 'paper') ||
-//     (playerSelection !== 'scrissors'));
+    playerSelection = prompt("Pick something between rock, paper, scrissors !:").toLowerCase();
+} while (!((playerSelection === 'rock') ||
+(playerSelection === 'paper') ||
+    (playerSelection === 'scrissors')));
 
 const computerSelection = getComputerChoice();
-
 console.log(computerSelection);
 console.log(playerSelection);
