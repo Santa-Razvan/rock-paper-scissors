@@ -1,10 +1,12 @@
 const choices = ['rock', 'paper', 'scrissors'];
 
+//function to get a random choice
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
     return choices[randomNumber];
 }
 
+//function that asks the user for a choice, if the choice is not correct then the user it's asked again
 function getPlayerChoice() {
     let playerSelection = " ";
     do {
@@ -15,6 +17,7 @@ function getPlayerChoice() {
         (playerSelection === 'scrissors')));
     return playerSelection;
 }
+
 let computerSelection;
 let playerSelection;
 
@@ -23,6 +26,7 @@ let computerCount = 0;
 // let computerSelection = getComputerChoice();
 // let playerSelection = getPlayerChoice();
 
+//function that checks each posible output for rock-paper-scrissors
 function play(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return console.log("It's a tie you both picked " + playerSelection + "!");
@@ -53,9 +57,16 @@ function play(playerSelection, computerSelection) {
     }
 }
 
-const i = prompt("How many games do you wanna play?");
+//verify if what the user types is a number or not
+let i;
+do {
+    i = Number(prompt("How many games do you wanna play?"));
+}
+while (isNaN(i));
+
 let counter = 0;
 
+//this function runs for more games at a time, based on the number given by the user
 function game() {
     while (counter < i) {
         playerSelection = getPlayerChoice();
