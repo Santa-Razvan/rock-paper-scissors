@@ -1,4 +1,45 @@
 const choices = ['rock', 'paper', 'scrissors'];
+const rockButton = document.createElement('button');
+const paperButton = document.createElement('button');
+const scrissorsButton = document.createElement('button');
+const body = document.querySelector('body');
+const container = document.createElement('div');
+const paraResult = document.createElement('p');
+const paraYourScore = document.createElement('p');
+
+let computerSelection;
+let playerSelection;
+
+rockButton.addEventListener('click', (e) => {
+    play(e.target.textContent.toLowerCase(), getComputerChoice());
+});
+
+paperButton.addEventListener('click', (e) => {
+    play(e.target.textContent.toLowerCase(), getComputerChoice());
+});
+
+scrissorsButton.addEventListener('click', (e) => {
+    play(e.target.textContent.toLowerCase(), getComputerChoice());
+});
+
+scrissorsButton.textContent = "Scrissors";
+scrissorsButton.style.cssText = "padding: 6px 30px; margin-top: 10px; border:none; border-radius:6px; background-color:rgb(100,140,30); color:white;";
+
+paperButton.textContent = "Paper";
+paperButton.style.cssText = "padding: 6px 30px; margin-top: 10px; border:none; border-radius:6px; background-color:rgb(100,140,30); color:white;";
+
+rockButton.textContent = "Rock";
+rockButton.style.cssText = "padding: 6px 30px; margin-top: 10px; border:none; border-radius:6px; background-color:rgb(100,140,30); color:white;";
+
+body.style.cssText = "display:flex; justify-content:center; align-items:center; flex-direction:column; background-color:rgb(123,40,50);";
+container.style.cssText = "height:250px; width:500px; background-color: rgb(20,50,100); margin-top:20px; text-align:center;";
+paraResult.style.cssText = "height:30px; margin-top:50px; color:white;";
+
+body.appendChild(rockButton);
+body.appendChild(paperButton);
+body.appendChild(scrissorsButton);
+body.appendChild(container);
+container.appendChild(paraResult);
 
 //function to get a random choice
 function getComputerChoice() {
@@ -18,9 +59,6 @@ function getPlayerChoice() {
     return playerSelection;
 }
 
-let computerSelection;
-let playerSelection;
-
 let playerCount = 0;
 let computerCount = 0;
 // let computerSelection = getComputerChoice();
@@ -29,42 +67,42 @@ let computerCount = 0;
 //function that checks each posible output for rock-paper-scrissors
 function play(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return console.log("It's a tie you both picked " + playerSelection + "!");
+        return paraResult.textContent = "It's a tie you both picked " + playerSelection + "!";
 
     } else if ((playerSelection === 'rock') && (computerSelection === 'scrissors')) {
         playerCount++;
-        return console.log("You win! Rock beats Scrissors!");
+        return paraResult.textContent = "You win! Rock beats Scrissors!";
 
     } else if ((playerSelection === 'rock') && (computerSelection === 'paper')) {
         computerCount++;
-        return console.log("You lose! Paper beats Rock!")
+        return paraResult.textContent = "You lose! Paper beats Rock!";
 
     } else if ((playerSelection === 'paper') && (computerSelection === 'scrissors')) {
         computerCount++;
-        return console.log("You lose! Scrissors beats Paper");
+        return paraResult.textContent = "You lose! Scrissors beats Paper";
 
     } else if ((playerSelection === 'paper') && (computerSelection === 'rock')) {
         playerCount++;
-        return console.log("You win! Paper beats Rock");
+        return paraResult.textContent = "You win! Paper beats Rock";
 
     } else if ((playerSelection === 'scrissors') && (computerSelection === 'rock')) {
         computerCount++;
-        return console.log("You lose! Rock beats Scrissors!")
+        return paraResult.textContent = "You lose! Rock beats Scrissors!";
 
     } else {
         playerCount++;
-        return console.log("You win! Scrissors beats Paper!");
+        return paraResult.textContent = "You win! Scrissors beats Paper!";
     }
 }
 
 //verify if what the user types is a number or not
-let i;
-do {
-    i = Number(prompt("How many games do you wanna play?"));
-}
-while (isNaN(i));
+// let i;
+// do {
+//     i = Number(prompt("How many games do you wanna play?"));
+// }
+// while (isNaN(i));
 
-let counter = 0;
+// let counter = 0;
 
 //this function runs for more games at a time, based on the number given by the user
 function game() {
@@ -89,4 +127,5 @@ function game() {
 //console.log(playerSelection);
 //console.log(computerSelection);
 // play(playerSelection, computerSelection);
-game();
+//game();
+
