@@ -13,14 +13,17 @@ let playerSelection;
 
 rockButton.addEventListener('click', (e) => {
     play(e.target.textContent.toLowerCase(), getComputerChoice());
+    winner();
 });
 
 paperButton.addEventListener('click', (e) => {
     play(e.target.textContent.toLowerCase(), getComputerChoice());
+    winner();
 });
 
 scrissorsButton.addEventListener('click', (e) => {
     play(e.target.textContent.toLowerCase(), getComputerChoice());
+    winner();
 });
 
 scrissorsButton.textContent = "Scrissors";
@@ -107,6 +110,16 @@ function play(playerSelection, computerSelection) {
         playerCount++;
         paraYourScore.textContent = "You: " + +playerCount;
         return paraResult.textContent = "You win! Scrissors beats Paper!";
+    }
+}
+
+function winner() {
+    if (playerCount == 5) {
+        alert("You are the ultimate winner!");
+        window.location.reload();
+    } else if (computerCount == 5) {
+        alert("The computer is stronger!");
+        window.location.reload();
     }
 }
 
